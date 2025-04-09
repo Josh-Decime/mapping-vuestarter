@@ -1,13 +1,11 @@
-<script setup >
+<template>
+  <Example />
+</template>
+
+<script setup>
 import Example from '@/components/Example.vue';
 
 
 </script>
 
-<template>
-  <Example />
-</template>
-
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

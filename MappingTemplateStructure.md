@@ -1,13 +1,13 @@
 We are building with MVC structure, utilizing Vue. It is important to follow the organizational structure so here is a guide to the template structure.
 
-src (folder) -> assets, components, handlers, models, pages, services, & utils (folders); App.vue, AppState, env, main & router (files)
+src (folder) -> assets, components, handlers, models, pages, services, & utils (folders); App.vue, AppState.js, env.js, main.js & router.js (files)
 images are stored under assets -> img
-the navbar is in the components folder
+the Navbar.vue is in the components folder
 
 
 ***MODELS:
 When we have an array of objects in the AppState we want to use a model whenever applicable. Model instances are better for scaling. We can also set variables to all objects that doesn't need to be listed on the object by using ||
-Here is how out model should be set up: 
+Here is how our model should be set up: 
 export class ExampleModel {
     constructor(data) {
         this.example = data.example
@@ -27,7 +27,7 @@ Vue pages should be organized like:
   <script>
   export default {
     setup() {
-        <!-- Reference/watch values in the AppState or call functions in the services -->
+        <!-- Reference/watch values in the AppState or call functions in the services. For example: -->
          const variable = computed(() => AppState.variable)
         function exampleFunction() {
          exampleService.exampleFunction()
@@ -41,15 +41,16 @@ Vue pages should be organized like:
   </script>
 
 <style scoped lang="scss">
-/* Styles that are exclusive to this page. Shared styles can be stored under src->assets->scss->styles.scss */
+/* Styles that are exclusive to this page go here. Shared styles can be stored under src->assets->scss->styles.scss */
 </style>
 !!Important!! Vue pages should NEVER contain implementation functions, it should only have coordinator functions that call implementation functions from the services! 
 
 
 ***SERVICES:
 !!Important!! This stores ALL of our implementation functions, also known as Business Functions. 
-They should be grouped up by commonality, for example if we have characters they will have their own service, if we have enemies they would have their own service & overarching game rules would have their own, etc.
+They should be grouped up by commonality, for example if we have characters they will have their own service, if we have enemies they would have their own service & overarching game rules would have their own, etc. Here is an example of how the service should be structured:
 class ExampleService{
+    <!-- Implementation Functions go here -->
 }
 export const exampleService = new ExampleService()
 
